@@ -1,14 +1,14 @@
 import React from "react";
 import PostEntry from "./PostEntry.jsx";
 
-const PostList = function ({ posts, title }) {
+const PostList = function ({ title, posts, deletePost }) {
   return (
     <div className="postList">
       <h1>
         {title}: {posts.length}
       </h1>
       {posts.map((post) => {
-        return <PostEntry post={post} key={post.id} />;
+        return <PostEntry post={post} key={post.id} deletePost={deletePost} />;
       })}
     </div>
   );

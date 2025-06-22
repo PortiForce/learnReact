@@ -1,4 +1,5 @@
 import React from "react";
+import DefaultActionButton from "./../UI/button/DefaultActionButton.jsx";
 
 const PostEntry = function (props) {
   return (
@@ -13,7 +14,9 @@ const PostEntry = function (props) {
         <div>{props.post.dislikes}</div>
       </div>
       <div className="post__actions">
-        <button>Delete post {props.post.id}</button>
+        <DefaultActionButton onClick={() => props.deletePost(props.post.id)}>
+          Delete post {props.post.id}
+        </DefaultActionButton>
       </div>
     </div>
   );
