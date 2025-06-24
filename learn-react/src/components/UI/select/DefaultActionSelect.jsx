@@ -1,5 +1,4 @@
 import React from "react";
-import classes from "./DefaultActionSelect.module.css";
 
 const DefaultActionSelect = ({
   options,

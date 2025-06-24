@@ -9,9 +9,10 @@ const PostEntry = function (props) {
           {props.post.id} {props.post.title}
         </strong>
         <div>{props.post.body}</div>
-        <div>{props.post.views}</div>
-        <div>{props.post.likes}</div>
-        <div>{props.post.dislikes}</div>
+        <p>
+          Views: {props.post.views} | Likes: {props.post.likes} | Dislikes:{" "}
+          {props.post.dislikes}
+        </p>
       </div>
       <div className="post__actions">
         <DefaultActionButton onClick={() => props.deletePost(props.post.id)}>
