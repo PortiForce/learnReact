@@ -1,22 +1,37 @@
 import React, { useRef } from "react";
 import PostEntry from "./PostEntry.jsx";
-import { TransitionGroup, CSSTransition } from "react-transition-group";
+import { usePagination } from "./../../hooks/usePagination.js";
 
-const PostList = ({ title, posts, deletePost }) => {
+import { TransitionGroup, CSSTransition } from "react-transition-group";
+import DefaultActionButton from "../UI/button/DefaultActionButton.jsx";
+
+const PostList = ({
+  title,
+  posts,
+  deletePost,
+  showPostDetails,
+  totalCount,
+  itemsPerPage,
+}) => {
   // ❗ Always call hooks at the top
   const nodeRefs = useRef({});
 
+  const { currentPage, totalPages, offset, nextPage, prevPage, gotoPage } =
+    usePagination(totalCount, itemsPerPage);
+
   if (!posts.length) {
-    return <h1 style={{ textAlign: "center" }}>No Posts found</h1>;
+    return <h3 style={{ textAlign: "center" }}>No Posts found</h3>;
   }
+
+  const paginatedPosts = posts.slice(offset, offset + itemsPerPage);
 
   return (
     <div>
       <h1 style={{ textAlign: "center" }}>
-        {title}: {posts.length}
+        {title}: {posts.length} out of {totalCount}
       </h1>
       <TransitionGroup>
-        {posts.map((post, index) => {
+        {paginatedPosts.map((post, index) => {
           if (!nodeRefs.current[post.id]) {
             nodeRefs.current[post.id] = React.createRef();
           }
@@ -33,12 +48,28 @@ const PostList = ({ title, posts, deletePost }) => {
                   post={post}
                   number={index + 1}
                   deletePost={deletePost}
+                  showPostDetails={showPostDetails}
                 />
               </div>
             </CSSTransition>
           );
         })}
       </TransitionGroup>
+      <div className="page__wrapper">
+        <DefaultActionButton onClick={prevPage} disabled={currentPage === 1}>
+          Prev
+        </DefaultActionButton>
+        <span className="page">
+          {" "}
+          Page {currentPage} of {totalPages}{" "}
+        </span>
+        <DefaultActionButton
+          onClick={nextPage}
+          disabled={currentPage === totalPages}
+        >
+          Next
+        </DefaultActionButton>
+      </div>
     </div>
   );
 };

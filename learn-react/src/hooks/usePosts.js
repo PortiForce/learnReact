@@ -16,7 +16,6 @@ export const usePosts = (posts, sortField, postQuery) => {
 
 export const useSortedPosts = (posts, sortField) => {
   const sortedPosts = useMemo(() => {
-    console.log("used sorted posts api");
     if (sortField) {
       return [...posts].sort((a, b) => {
         if (typeof a[sortField] === "string") {
