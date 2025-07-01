@@ -1,20 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
 
-import NotFound from "./../../pages/NotFound.jsx";
-import About from "./../../pages/About.jsx";
-import Posts from "./../../pages/Posts";
-import PostDetails from "./../../pages/PostDetails";
-
-import { Route, Routes, Navigate } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
+import { publicRoutes, privateRoutes } from "../../router/routes.js";
+import { AuthContext } from "../../context/index.js";
 
 const AppRouter = () => {
+  const { isAuthorized } = useContext(AuthContext);
+
   return (
     <Routes>
-      <Route path="/about" element={<About />} />
-      <Route exact path="/posts" element={<Posts />} />
-      <Route exact path="/posts/:id" element={<PostDetails />} />
-      <Route path="/notFound" element={<NotFound />} />
-      <Route path="*" element={<Navigate to="/notFound" />} />
+      {(isAuthorized ? privateRoutes : publicRoutes).map(
+        ({ path, element }) => (
+          <Route key={Route.path} path={path} element={element} />
+        )
+      )}
     </Routes>
   );
 };

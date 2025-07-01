@@ -9,7 +9,7 @@ const DefaultActionSelect = ({
 }) => {
   return (
     <div>
-      {title.length > 0 ? <div>{title}</div> : ""}
+      {title && title.length > 0 ? <div>{title}</div> : ""}
       <select value={value} onChange={(event) => onChange(event.target.value)}>
         <option disabled={true} value="">
           {defaultValue}

@@ -18,8 +18,8 @@ const PostCommentList = ({
   }
   return (
     <>
+      <h3>{title}</h3>
       <div className="postComment__list">
-        <div>{title}</div>
         {postComments.map((comment) => (
           <PostCommentEntry
             key={comment.id}

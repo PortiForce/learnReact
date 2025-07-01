@@ -19,7 +19,7 @@ const PostList = ({
   const { currentPage, totalPages, offset, nextPage, prevPage, gotoPage } =
     usePagination(totalCount, itemsPerPage);
 
-  if (!posts.length) {
+  if (!posts && !posts.length) {
     return <h3 style={{ textAlign: "center" }}>No Posts found</h3>;
   }
 
@@ -27,9 +27,7 @@ const PostList = ({
 
   return (
     <div>
-      <h1 style={{ textAlign: "center" }}>
-        {title}: {posts.length} out of {totalCount}
-      </h1>
+      <h2 style={{ textAlign: "center" }}>Current posts</h2>
       <TransitionGroup>
         {paginatedPosts.map((post, index) => {
           if (!nodeRefs.current[post.id]) {
