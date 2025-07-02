@@ -8,9 +8,9 @@ const PostEntry = function (props) {
     <div className="post">
       <div className="post__content">
         <strong>
-          {props.post.id} {props.post.title}
+          #{props.post.id} {props.post.title}
         </strong>
-        <div>{props.post.body}</div>
+        <div className="post__body">{props.post.body}</div>
         <p>
           Views: {props.post.views} | Likes: {props.post.likes} | Dislikes:{" "}
           {props.post.dislikes}

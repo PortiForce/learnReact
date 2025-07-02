@@ -1,3 +1,5 @@
 .defActionButton {
   padding: 5px 15px;
+  text-wrap: nowrap;
+  margin: 2px 4px;
 }

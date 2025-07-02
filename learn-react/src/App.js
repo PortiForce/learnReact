@@ -4,7 +4,7 @@ import "./styles/App.css";
 
 import NavBar from "./components/UI/navBar/NavBar.jsx";
 import AppRouter from "./components/UI/AppRouter.jsx";
-import { AuthProvider, AuthContext } from "./context/index.js";
+import { AuthProvider } from "./context/index.js";
 
 function App() {
   return (

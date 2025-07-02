@@ -57,6 +57,10 @@
   margin: 7px 3px;
 }
 
+.post__body {
+  max-width: 70%;
+}
+
 .post-enter {
   opacity: 0;
 }
@@ -119,4 +123,22 @@
 
 .navbar__links {
   margin-left: auto;
+}
+
+.navbar__linkItem {
+  text-decoration: none;
+  color: #333;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  transition: background 0.2s ease-in-out;
+}
+
+.navbar__linkItem:hover {
+  background: #e0e0e0;
+  color: #000;
+}
+
+.navbar__linkItem.active {
+  font-weight: bold;
+  color: #1976d2;
 }
